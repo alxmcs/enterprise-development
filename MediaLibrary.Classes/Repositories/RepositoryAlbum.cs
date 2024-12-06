@@ -74,7 +74,7 @@ public class RepositoryAlbum : IRepositoryAlbum
         oldValue.Id = album.Id;
         oldValue.Release = album.Release;
         oldValue.Title = album.Title;
-        oldValue.IdArtist = album.IdArtist;
+        oldValue.ArtistId = album.ArtistId;
         return true;
     }
 }

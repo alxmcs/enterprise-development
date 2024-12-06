@@ -21,5 +21,5 @@ public class DtoAlbumDetails
     /// Идентификатор музыкального исполнителя,
     /// которому принадлежит этот альбом
     /// </summary>
-    public required int IdArtist { get; set; }
+    public required int ArtistId { get; set; }
 }

@@ -34,8 +34,8 @@ public class Track
     /// Идентификатор альбома, в котором находится трек
     /// </summary>
     [ForeignKey("Album")]
-    [Column("IdAlbum")]
-    public required int IdAlbum { get; set; }
+    [Column("AlbumId")]
+    public required int AlbumId { get; set; }
     /// <summary>
     /// Получение экземпляра альбома
     /// </summary>

@@ -20,5 +20,5 @@ public class Genre
     /// </summary>
     [Column("Name")]
     public required string Name { get; set; }
-    public required ICollection<ParticipationArtistGenre> ParticipationArtistGenres { get; set; } = new List<ParticipationArtistGenre>();
+    public required ICollection<ParticipationArtistGenre> ParticipationArtistGenres { get; set; } = [];
 }

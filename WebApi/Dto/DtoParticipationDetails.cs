@@ -8,9 +8,9 @@ public class DtoParticipationDetails
     /// <summary>
     /// Идентификатор жанра
     /// </summary>
-    public int IdGenre { get; set; }
+    public int GenreId { get; set; }
     /// <summary>
     /// Идентификатор артиста
     /// </summary>
-    public int IdArtist { get; set; }
+    public int ArtistId { get; set; }
 }

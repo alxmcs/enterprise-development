@@ -13,10 +13,10 @@ public interface IServiceParticipationArtistGenre
     /// <summary>
     /// Получение данных о связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <returns></returns>
-    public DtoParticipationDetails? Get(int idGenre, int idArtist);
+    public DtoParticipationDetails? Get(int GenreId, int ArtistId);
     /// <summary>
     /// Добавление связи в список
     /// </summary>
@@ -26,16 +26,16 @@ public interface IServiceParticipationArtistGenre
     /// <summary>
     /// Изменение данных связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <param name="dtoParticipation"></param>
     /// <returns></returns>
-    public bool Put(int idGenre, int idArtist, DtoParticipationDetails dtoParticipation);
+    public bool Put(int GenreId, int ArtistId, DtoParticipationDetails dtoParticipation);
     /// <summary>
     /// Удаление связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <returns></returns>
-    public bool Delete(int idGenre, int idArtist);
+    public bool Delete(int GenreId, int ArtistId);
 }

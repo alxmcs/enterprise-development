@@ -25,12 +25,12 @@ public class ServiceParticipationArtistGenre(IRepositoryParticipationArtistGenre
     /// <summary>
     /// Реализация получения данных о связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <returns></returns>
-    public DtoParticipationDetails? Get(int idGenre, int idArtist)
+    public DtoParticipationDetails? Get(int GenreId, int ArtistId)
     {
-        var participation = repository.Get(idGenre, idArtist);
+        var participation = repository.Get(GenreId, ArtistId);
         return participation == null ? null : mapper.Map<DtoParticipationDetails>(participation);
     }
 
@@ -41,7 +41,7 @@ public class ServiceParticipationArtistGenre(IRepositoryParticipationArtistGenre
     /// <returns></returns>
     public bool Post(DtoParticipationDetails participation)
     {
-        if (!serviceArtist.ArtistExists(participation.IdArtist) || !serviceGenre.GenreExists(participation.IdGenre))
+        if (!serviceArtist.ArtistExists(participation.ArtistId) || !serviceGenre.GenreExists(participation.GenreId))
             return false;
         var part = mapper.Map<ParticipationArtistGenre>(participation);
         return repository.Post(part);
@@ -50,24 +50,24 @@ public class ServiceParticipationArtistGenre(IRepositoryParticipationArtistGenre
     /// <summary>
     /// Реализация изменения данных связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <param name="participation"></param>
     /// <returns></returns>
-    public bool Put(int idGenre, int idArtist, DtoParticipationDetails participation)
+    public bool Put(int GenreId, int ArtistId, DtoParticipationDetails participation)
     {
         var participationOrig = mapper.Map<ParticipationArtistGenre>(participation);
-        return repository.Put(idGenre, idArtist, participationOrig);
+        return repository.Put(GenreId, ArtistId, participationOrig);
     }
 
     /// <summary>
     /// Реализация удаления связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <returns></returns>
-    public bool Delete(int idGenre, int idArtist)
+    public bool Delete(int GenreId, int ArtistId)
     {
-        return repository.Delete(idGenre, idArtist);
+        return repository.Delete(GenreId, ArtistId);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MediaLibrary.Classes;
 
@@ -8,18 +9,21 @@ namespace MediaLibrary.Classes;
 [Table("ParticipationArtistGenre")]
 public class ParticipationArtistGenre
 {
+    [Key]
+    [Column("Id")]
+    public required int Id { get; set; }
     /// <summary>
     /// Идентификатор связанного жанра музыки
     /// </summary>
     [ForeignKey("Genre")]
-    [Column("IdGenre")]
-    public required int IdGenre { get; set; }
+    [Column("GenreId")]
+    public required int GenreId { get; set; }
     /// <summary>
     /// Идентификатор связанного музыкального исполнителя
     /// </summary>
     [ForeignKey("Artist")]
-    [Column("IdArtist")]
-    public required int IdArtist { get; set; }
+    [Column("ArtistId")]
+    public required int ArtistId { get; set; }
     /// <summary>
     /// Получение экземпляра жанра
     /// </summary>

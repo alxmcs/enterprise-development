@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApi.Dto;
-using MediaLibrary.Classes;
 using AutoMapper;
-using MediaLibrary.Classes.IServices;
 
 namespace WebApi.Controllers;
 
@@ -30,13 +28,13 @@ public class ControllerParticipationArtistGenre(IServiceParticipationArtistGenre
     /// <summary>
     /// Получение данных о связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <returns></returns>
     [HttpGet("{id}")]
-    public ActionResult<DtoParticipationDetails> Get(int idGenre, int idArtist)
+    public ActionResult<DtoParticipationDetails> Get(int GenreId, int ArtistId)
     {
-        var participation = _participationService.Get(idGenre, idArtist);
+        var participation = _participationService.Get(GenreId, ArtistId);
         if (participation == null)
             return NotFound();
         var participationDto = _mapper.Map<DtoParticipationDetails>(participation);
@@ -61,17 +59,17 @@ public class ControllerParticipationArtistGenre(IServiceParticipationArtistGenre
     /// <summary>
     /// Изменение связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <param name="participation"></param>
     /// <returns></returns>
     [HttpPut("{id}")]
-    public IActionResult Put(int idGenre, int idArtist, [FromBody] DtoParticipationDetails participation)
+    public IActionResult Put(int GenreId, int ArtistId, [FromBody] DtoParticipationDetails participation)
     {
-        if (_participationService.Put(idGenre, idArtist, participation))
+        if (_participationService.Put(GenreId, ArtistId, participation))
         {
-            participation.IdArtist = idArtist;
-            participation.IdGenre = idGenre;
+            participation.ArtistId = ArtistId;
+            participation.GenreId = GenreId;
             return CreatedAtAction(nameof(Get), participation);
         }
         return NotFound();
@@ -80,12 +78,12 @@ public class ControllerParticipationArtistGenre(IServiceParticipationArtistGenre
     /// <summary>
     /// Удаление связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <returns></returns>
     [HttpDelete("{id}")]
-    public IActionResult Delete(int idGenre, int idArtist)
+    public IActionResult Delete(int GenreId, int ArtistId)
     {
-        return _participationService.Delete(idGenre, idArtist) ? Ok() : NoContent();
+        return _participationService.Delete(GenreId, ArtistId) ? Ok() : NoContent();
     }
 }

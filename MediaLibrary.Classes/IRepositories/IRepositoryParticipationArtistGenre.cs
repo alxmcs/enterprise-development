@@ -13,10 +13,10 @@ public interface IRepositoryParticipationArtistGenre
     /// <summary>
     /// Получение данных связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <returns></returns>
-    public ParticipationArtistGenre? Get(int idGenre, int idArtist);
+    public ParticipationArtistGenre? Get(int GenreId, int ArtistId);
     /// <summary>
     /// Добавление новой связи
     /// </summary>
@@ -26,16 +26,16 @@ public interface IRepositoryParticipationArtistGenre
     /// <summary>
     /// Удаление связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <returns></returns>
-    public bool Delete(int idGenre, int idArtist);
+    public bool Delete(int GenreId, int ArtistId);
     /// <summary>
     /// Изменение данных связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <param name="track"></param>
     /// <returns></returns>
-    public bool Put(int idGenre, int idArtist, ParticipationArtistGenre track);
+    public bool Put(int GenreId, int ArtistId, ParticipationArtistGenre track);
 }

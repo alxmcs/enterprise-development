@@ -28,7 +28,7 @@ public class ServiceAlbum(IRepositoryAlbum repository, IMapper mapper, IServiceA
     /// </summary>
     public bool Post(DtoAlbumCreateUpdate dtoAlbum)
     {
-        if (!serviceArtist.ArtistExists(dtoAlbum.IdArtist))
+        if (!serviceArtist.ArtistExists(dtoAlbum.ArtistId))
             return false;
         var album = mapper.Map<Album>(dtoAlbum);
         return repository.Post(album);

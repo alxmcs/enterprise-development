@@ -20,20 +20,20 @@ public class RepositoryParticipationArtistGenre : IRepositoryParticipationArtist
     /// <summary>
     /// Реализация получения данных связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <returns></returns>
-    public ParticipationArtistGenre? Get(int idGenre, int idArtist) => participations.Find(t => t.IdGenre == idGenre && t.IdArtist == idArtist);
+    public ParticipationArtistGenre? Get(int GenreId, int ArtistId) => participations.Find(t => t.GenreId == GenreId && t.ArtistId == ArtistId);
 
     /// <summary>
     /// Реализация удаления связи
     /// </summary>
-    /// <param name="idGenre"></param>
-    /// <param name="idArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <returns></returns>
-    public bool Delete(int idGenre, int idArtist)
+    public bool Delete(int GenreId, int ArtistId)
     {
-        var participation = Get(idGenre, idArtist);
+        var participation = Get(GenreId, ArtistId);
         if (participation != null)
         {
             participations.Remove(participation);
@@ -49,7 +49,7 @@ public class RepositoryParticipationArtistGenre : IRepositoryParticipationArtist
     /// <returns></returns>
     public bool Post(ParticipationArtistGenre participation)
     {
-        if (Get(participation.IdGenre, participation.IdArtist) == null)
+        if (Get(participation.GenreId, participation.ArtistId) == null)
         {
             participations.Add(participation);
             return true;
@@ -60,17 +60,17 @@ public class RepositoryParticipationArtistGenre : IRepositoryParticipationArtist
     /// <summary>
     /// Реализация изменения связи
     /// </summary>
-    /// <param name="IdGenre"></param>
-    /// <param name="IdArtist"></param>
+    /// <param name="GenreId"></param>
+    /// <param name="ArtistId"></param>
     /// <param name="participation"></param>
     /// <returns></returns>
-    public bool Put(int IdGenre, int IdArtist, ParticipationArtistGenre participation)
+    public bool Put(int GenreId, int ArtistId, ParticipationArtistGenre participation)
     {
-        var oldValue = Get(IdGenre, IdArtist);
+        var oldValue = Get(GenreId, ArtistId);
         if (oldValue == null)
             return false;
-        oldValue.IdGenre = participation.IdGenre;
-        oldValue.IdArtist = participation.IdArtist;
+        oldValue.GenreId = participation.GenreId;
+        oldValue.ArtistId = participation.ArtistId;
         return true;
     }
 }

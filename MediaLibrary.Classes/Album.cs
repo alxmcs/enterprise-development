@@ -30,10 +30,12 @@ public class Album
     /// которому принадлежит этот альбом
     /// </summary>
     [ForeignKey("Artist")]
-    [Column("IdArtist")]
-    public required int IdArtist { get; set; }
+    [Column("ArtistId")]
+    public required int ArtistId { get; set; }
+
+    public Artist Artist { get; set; } = null!;
     /// <summary>
     /// Коллекция артистов
     /// </summary>
-    public required ICollection<Artist> Artists { get; set; } = new List<Artist>();
+    public required ICollection<Track> Tracks { get; set; } = [];
 }

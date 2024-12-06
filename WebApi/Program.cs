@@ -1,3 +1,4 @@
+using AutoMapper;
 using WebApi;
 using System.Reflection;
 using MediaLibrary.Classes;
@@ -70,5 +71,7 @@ void ConfigureServices(IServiceCollection services)
     services.AddSingleton<IServiceParticipationArtistGenre, ServiceParticipationArtistGenre>();
 
     // Настройка AutoMapper
-    services.AddAutoMapper(typeof(Mapping));
+    var mapperConfig = new MapperConfiguration(config => config.AddProfile(new Mapping()));
+    IMapper? mapper = mapperConfig.CreateMapper();
+    services.AddSingleton(mapper);
 }

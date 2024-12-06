@@ -75,7 +75,7 @@ public class RepositoryTrack : IRepositoryTrack
         oldValue.TrackNum = track.TrackNum;
         oldValue.Title = track.Title;
         oldValue.Duration = track.Duration;
-        oldValue.IdAlbum = track.IdAlbum;
+        oldValue.AlbumId = track.AlbumId;
         return true;
     }
 }

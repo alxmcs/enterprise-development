@@ -43,22 +43,22 @@ public class MediaLibraryDbContext : DbContext
     {
         //Связь альбома и артиста
         modelBuilder.Entity<Album>()
-            .HasOne(ar => ar.Artists)
+            .HasOne(ar => ar.Artist)
             .WithMany()
-            .HasForeignKey(al => al.IdArtist);
+            .HasForeignKey(al => al.ArtistId);
         //Связь трека и альбома
         modelBuilder.Entity<Track>()
             .HasOne(al => al.Album)
             .WithMany()
-            .HasForeignKey(al => al.IdAlbum);
+            .HasForeignKey(al => al.AlbumId);
         //Связь артиста и жанра
         modelBuilder.Entity<ParticipationArtistGenre>()
             .HasOne(a => a.Artist)
             .WithMany()
-            .HasForeignKey(ar => ar.IdArtist);
+            .HasForeignKey(ar => ar.ArtistId);
         modelBuilder.Entity<ParticipationArtistGenre>()
             .HasOne(g => g.Genre)
             .WithMany()
-            .HasForeignKey(g => g.IdGenre);
+            .HasForeignKey(g => g.GenreId);
     }   
 }

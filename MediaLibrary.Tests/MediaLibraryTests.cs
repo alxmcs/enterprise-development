@@ -30,7 +30,7 @@ public class MediaLibraryTests(MediaFixture fixture) : IClassFixture<MediaFixtur
     {
         int albumId = 4;
         var tracks = _fixture.TestData.Tracks!
-            .Where(t => t.IdAlbum == albumId)
+            .Where(t => t.AlbumId == albumId)
             .OrderBy(t => t.TrackNum)
             .ToList();
         Assert.NotEmpty(tracks);
@@ -54,7 +54,7 @@ public class MediaLibraryTests(MediaFixture fixture) : IClassFixture<MediaFixtur
             .Select(a => new
             {
                 Album = a,
-                TrackCount = _fixture.TestData.Tracks!.Count(t => t.IdAlbum == a.Id)
+                TrackCount = _fixture.TestData.Tracks!.Count(t => t.AlbumId == a.Id)
             })
             .ToList();
         Assert.NotEmpty(albums);
@@ -81,7 +81,7 @@ public class MediaLibraryTests(MediaFixture fixture) : IClassFixture<MediaFixtur
             {
                 Album = a,
                 TotalDuration = _fixture.TestData.Tracks!
-                    .Where(t => t.IdAlbum == a.Id)
+                    .Where(t => t.AlbumId == a.Id)
                     .Sum(t => t.Duration.TotalSeconds)
             })
             .OrderByDescending(a => a.TotalDuration)
@@ -107,7 +107,7 @@ public class MediaLibraryTests(MediaFixture fixture) : IClassFixture<MediaFixtur
             .Select(a => new
             {
                 Artist = a,
-                AlbumCount = _fixture.TestData.Albums!.Count(al => al.IdArtist == a.Id)
+                AlbumCount = _fixture.TestData.Albums!.Count(al => al.ArtistId == a.Id)
             })
             .OrderByDescending(a => a.AlbumCount)
             .ToList();
@@ -132,7 +132,7 @@ public class MediaLibraryTests(MediaFixture fixture) : IClassFixture<MediaFixtur
     {
         var albumDurations = _fixture.TestData.Albums!
             .Select(a => _fixture.TestData.Tracks!
-            .Where(t => t.IdAlbum == a.Id)
+            .Where(t => t.AlbumId == a.Id)
             .Sum(t => t.Duration.TotalSeconds))
             .ToList();
         Assert.NotEmpty(albumDurations);

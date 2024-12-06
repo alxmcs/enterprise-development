@@ -24,5 +24,5 @@ public class DtoTrackDetails
     /// <summary>
     /// Идентификатор альбома, в котором находится трек
     /// </summary>
-    public required int IdAlbum { get; set; }
+    public required int AlbumId { get; set; }
 }
