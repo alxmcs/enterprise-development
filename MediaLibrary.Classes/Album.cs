@@ -29,11 +29,10 @@ public class Album
     /// Идентификатор музыкального исполнителя,
     /// которому принадлежит этот альбом
     /// </summary>
-    [ForeignKey("Artist")]
-    [Column("ArtistId")]
+    [Column("IdArtist")]
     public required int ArtistId { get; set; }
 
-    public Artist Artist { get; set; } = null!;
+    public required Artist Artist { get; set; } = null!;
     /// <summary>
     /// Коллекция артистов
     /// </summary>

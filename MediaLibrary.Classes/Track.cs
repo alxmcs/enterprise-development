@@ -39,5 +39,5 @@ public class Track
     /// <summary>
     /// Получение экземпляра альбома
     /// </summary>
-    public Album Album { get; set; } = null!;
+    public required Album Album { get; set; } = null!;
 }
